@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1763195209078",
+    "username": "testuser",
+    "password": "testpass",
+    "email": "test@example.com",
+    "level": 1,
+    "experience": 0,
+    "createdAt": "2025-11-15T08:26:49.078Z"
+  },
+  {
+    "id": "1763195241688",
+    "username": "KateZ",
+    "password": "KateZg",
+    "email": "KateZ@example.com",
+    "level": 1,
+    "experience": 0,
+    "createdAt": "2025-11-15T08:27:21.688Z"
+  },
+  {
+    "id": "1763196206234",
+    "username": "testplayer",
+    "password": "pass123",
+    "email": "test@game.com",
+    "level": 1,
+    "experience": 0,
+    "createdAt": "2025-11-15T08:43:26.234Z"
+  },
+  {
+    "id": "1763197096848",
+    "username": "KateZg",
+    "password": "KateZ",
+    "email": "KateZg@example.com",
+    "level": 1,
+    "experience": 0,
+    "createdAt": "2025-11-15T08:58:16.848Z"
+  }
+]
