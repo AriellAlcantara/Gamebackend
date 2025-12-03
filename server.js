@@ -18,6 +18,8 @@ if (!mongoUri) {
 
 const app = express();
 app.use(express.json());
+// Admin secret: fallback to hardcoded 'Kate_Admin' if env not set
+const ADMIN_SECRET = process.env.ADMIN_PASSWORD || process.env.ADMIN_TOKEN || 'Kate_Admin';
 
 // Welcome route
 app.get('/', (req, res) => {
@@ -301,10 +303,7 @@ app.post('/api/players/login', async (req, res) => {
 // ADMIN: Get Users (auth via ADMIN_PASSWORD or ADMIN_TOKEN)
 app.get('/api/players', async (req, res) => {
     try {
-        const adminSecret = process.env.ADMIN_PASSWORD || process.env.ADMIN_TOKEN;
-        if (!adminSecret) {
-            return res.status(500).json({ success: false, message: 'Server admin secret not configured. Set ADMIN_PASSWORD or ADMIN_TOKEN.' });
-        }
+        const adminSecret = ADMIN_SECRET;
         const provided = req.query.adminPassword
             || req.headers['x-admin-password']
             || req.headers['x-admin-token']
@@ -336,10 +335,7 @@ app.get('/api/players', async (req, res) => {
 // ADMIN: Get Users via POST with body { adminPassword }
 app.post('/api/players/get', async (req, res) => {
     try {
-        const adminSecret = process.env.ADMIN_PASSWORD || process.env.ADMIN_TOKEN;
-        if (!adminSecret) {
-            return res.status(500).json({ success: false, message: 'Server admin secret not configured. Set ADMIN_PASSWORD or ADMIN_TOKEN.' });
-        }
+        const adminSecret = ADMIN_SECRET;
         const provided = (req.body && (req.body.adminPassword || req.body.adminToken))
             || req.headers['x-admin-password']
             || req.headers['x-admin-token']
